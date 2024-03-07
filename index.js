@@ -4,13 +4,18 @@ const app = express();
 
 //PORT find krna h
 
-require("dotebv").config();
+require("dotenv").config();
+
 const PORT = process.env.PORT || 3000;
 
 //middleware add krnah
 app.use(express.json());
+// const fileupload = require("express-fileupload");
+// app.use(fileupload);
+
 const fileupload = require("express-fileupload");
-app.use(fileupload);
+app.use(fileupload());
+
 
 //db se connect krnah
 const db = require("./config/database");
@@ -22,7 +27,7 @@ cloudinary.cloudinaryConnect();
 
 //api route mount krna h
 const Upload = require("./routes/fileUpload")
-app.use('api/v1/upload',Upload);
+app.use('/api/v1/upload',Upload);
 
 //activate server
 app.listen(PORT,()=>{
