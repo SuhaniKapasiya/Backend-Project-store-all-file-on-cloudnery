@@ -4,7 +4,7 @@ const app = express();
 
 //PORT find krna h
 
-require("dotebv").config();
+require("dotenv").config();
 const PORT = process.env.PORT || 3000;
 
 //middleware add krnah
