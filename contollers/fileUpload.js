@@ -16,6 +16,7 @@ exports.localFileUpload = async (req, res) => {
     console.log("PATH->", path);
 
     //add path to the move function
+    //use of mv() -> method is to place the file somewhere on server
     file.mv(path, (err) => {
       console.log(err);
     });
@@ -59,7 +60,7 @@ exports.imageUpload = async (req, res) => {
     //validation
     const supportedTypes = ["jpg", "jpeg", "png"];
     const fileType = file.name.split(".")[1].toLowerCase();
-    console.log("File Tyoe", fileType);
+    console.log("File Type", fileType);
 
     if (!isFileTypeSupported(fileType, supportedTypes)) {
       return res.status(400).json({
